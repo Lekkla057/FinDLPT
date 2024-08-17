@@ -1,5 +1,5 @@
 const express = require("express");
-const { handleGenerateRequest } = require("./generateContent");
+const { handleGenerateRequest,handleGenerateRequestLine } = require("./generateContent");
 const bodyParser = require('body-parser')
 const request = require('request')
 require("dotenv").config();

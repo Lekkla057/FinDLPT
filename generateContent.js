@@ -24,7 +24,8 @@ exports.handleGenerateRequestLine = async (req, res) => {
     //   const { prompt } = req.body;
     //   console.log(prompt);
       const result = await model.generateContent(msg);
-      console.log(result);
+      console.log(result.response.candidates[0].content.parts[0].text);
+      console.log(result.response.candidates[0].content.parts[0].text);
     // return result; 
       res.status(200)
     } catch (error) {
