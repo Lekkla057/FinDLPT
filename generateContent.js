@@ -22,12 +22,13 @@ exports.handleGenerateRequestLine = async (req, res) => {
       let reply_token = req.body.events[0].replyToken
       let msg = req.body.events[0].message.text
       console.log(req.body);
-      reply(reply_token, msg)  
     //   const { prompt } = req.body;
     //   console.log(prompt);
       const result = await model.generateContent(msg);
       console.log(result.response.candidates[0].content.parts[0].text);
       console.log(result.response.candidates[0].content.parts[0].text);
+      reply(reply_token, result.response.candidates[0].content.parts[0].text)  
+
     // return result; 
       res.status(200)
     } catch (error) {
