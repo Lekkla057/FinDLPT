@@ -4,6 +4,7 @@ const apiKey = process.env.API_KEY;
 const config = new GoogleGenerativeAI('AIzaSyBs2HhR49MDULjy1_LScxv11IBAYkocDsk');
 const modelId = "gemini-pro";
 const model = config.getGenerativeModel({ model: modelId });
+const request = require('request')
 
 exports.handleGenerateRequest = async (req, res) => {
   try {
