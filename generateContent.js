@@ -20,6 +20,7 @@ exports.handleGenerateRequestLine = async (req, res) => {
     try {
       let reply_token = req.body.events[0].replyToken
       let msg = req.body.events[0].message.text
+      console.log(req.body);
       reply(reply_token, msg)  
     //   const { prompt } = req.body;
     //   console.log(prompt);
