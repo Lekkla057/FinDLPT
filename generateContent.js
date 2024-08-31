@@ -33,8 +33,9 @@ exports.handleGenerateRequestLine = async (req, res) => {
       const result = await model.generateContent(msg);
       console.log(result.response.candidates[0].content.parts[0].text);
       console.log(result.response.candidates[0].content.parts[0].text);
-      //reply(reply_token, result.response.candidates[0].content.parts[0].text)  
-      runSample(reply_token,msg)
+      runSample(reply_token,msg);
+      reply(reply_token, result.response.candidates[0].content.parts[0].text)  
+
     // return result; 
       res.status(200)
     } catch (error) {
@@ -100,8 +101,8 @@ async function runSample(reply_token,text) {
   console.log('Detected intent');
   const result = responses[0].queryResult;
   console.log(result);
-  console.log(result.parameters.fields.Amont.listValue.values[0].structValue.fields.amount.numberValue);
-  console.log(result.parameters.fields.Transaction.listValue.values[0].stringValue);
+  // console.log(result.parameters.fields.Amont.listValue.values[0].structValue.fields.amount.numberValue);
+  // console.log(result.parameters.fields.Transaction.listValue.values[0].stringValue);
 
   console.log(`  Query: ${result.queryText}`);
   console.log(`  Response: ${result.fulfillmentText}`);
