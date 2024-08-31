@@ -108,13 +108,13 @@ async function runSample(reply_token,text,textGEMINI) {
 
   console.log(`  Query: ${result.queryText}`);
   console.log(`  Response: ${result.fulfillmentText}`);
-  if (result.intent) {
+  if(result.intent.displayName=="Question"){
+    reply(reply_token,textGEMINI)
+  }
+  else if (result.intent) {
     console.log(`  Intent: ${result.intent.displayName}`);
     reply(reply_token,result.fulfillmentText)
 
-  }
-  else if(result.intent.displayName=="Question"){
-    reply(reply_token,textGEMINI)
   }
   else {
     console.log('  No intent matched.');
