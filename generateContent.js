@@ -33,7 +33,7 @@ exports.handleGenerateRequestLine = async (req, res) => {
       const result = await model.generateContent(msg);
       console.log(result.response.candidates[0].content.parts[0].text);
       console.log(result.response.candidates[0].content.parts[0].text);
-      reply(reply_token, result.response.candidates[0].content.parts[0].text)  
+      //reply(reply_token, result.response.candidates[0].content.parts[0].text)  
       runSample(reply_token,msg)
     // return result; 
       res.status(200)
