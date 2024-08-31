@@ -1,7 +1,7 @@
 {
   "name": "testchatgpt",
   "version": "1.0.0",
-  "description": "",
+  "description": "\"# FinDLPT\"",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,11 +10,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/dialogflow": "^6.8.0",
     "@google/generative-ai": "^0.17.0",
     "axios": "^1.7.4",
     "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "request": "^2.88.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lekkla057/FinDLPT.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lekkla057/FinDLPT/issues"
+  },
+  "homepage": "https://github.com/Lekkla057/FinDLPT#readme"
 }
