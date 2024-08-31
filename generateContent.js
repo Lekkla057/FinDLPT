@@ -112,7 +112,11 @@ async function runSample(reply_token,text,textGEMINI) {
     console.log(`  Intent: ${result.intent.displayName}`);
     reply(reply_token,result.fulfillmentText)
 
-  } else {
+  }
+  else if(result.intent.displayName=="Question"){
+    reply(reply_token,textGEMINI)
+  }
+  else {
     console.log('  No intent matched.');
     reply(reply_token,textGEMINI)
 
