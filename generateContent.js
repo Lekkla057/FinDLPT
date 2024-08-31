@@ -33,8 +33,8 @@ exports.handleGenerateRequestLine = async (req, res) => {
       const result = await model.generateContent(msg);
       console.log(result.response.candidates[0].content.parts[0].text);
       console.log(result.response.candidates[0].content.parts[0].text);
-      runSample(reply_token,msg);
-      reply(reply_token, result.response.candidates[0].content.parts[0].text)  
+      runSample(reply_token,msg,result.response.candidates[0].content.parts[0].text);
+      //reply(reply_token, result.response.candidates[0].content.parts[0].text)  
 
     // return result; 
       res.status(200)
@@ -64,7 +64,7 @@ exports.handleGenerateRequestLine = async (req, res) => {
         console.log('status = ' + res.statusCode);
     });
 }
-async function runSample(reply_token,text) {
+async function runSample(reply_token,text,textGEMINI) {
   projectId = 'my-project-1552734877290'
   // A unique identifier for the given session
   console.log(projectId);
@@ -108,8 +108,11 @@ async function runSample(reply_token,text) {
   console.log(`  Response: ${result.fulfillmentText}`);
   if (result.intent) {
     console.log(`  Intent: ${result.intent.displayName}`);
+    reply(reply_token,result.fulfillmentText)
+
   } else {
     console.log('  No intent matched.');
+    reply(reply_token,textGEMINI)
+
   }
-  reply(reply_token,result.fulfillmentText)
 }
