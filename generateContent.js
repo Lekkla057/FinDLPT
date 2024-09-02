@@ -46,7 +46,7 @@ exports.handleGenerateRequestLine = async (req, res) => {
     try {
       let reply_token = req.body.events[0].replyToken
       let msg = req.body.events[0].message.text
-      let userid=req.body.events[0].source.userId
+      let userid=req.body.events[0].source[0].userId
       console.log(req.body);
     //   const { prompt } = req.body;
     //   console.log(prompt);
