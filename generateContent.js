@@ -104,7 +104,7 @@ async function runSample(reply_token,text,userId) {
   
   console.log('Detected intent');
   const result = responses[0].queryResult;
-  console.log(result.parameters.fields);
+  console.log(result);
   // console.log(result.parameters.fields.Amont.listValue.values[0].structValue.fields.amount.numberValue);
   // console.log(result.parameters.fields.Transaction.listValue.values[0].stringValue);
 
