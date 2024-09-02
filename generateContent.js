@@ -139,4 +139,4 @@ async function runSample(reply_token,text,userid) {
     reply(reply_token,textGEMINI)
 
   }
-}userid
+}
