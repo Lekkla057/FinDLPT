@@ -51,8 +51,8 @@ exports.handleGenerateRequestLine = async (req, res) => {
     //   const { prompt } = req.body;
     //   console.log(prompt);
       //const result = await model.generateContent(msg);
-      console.log(result.response.candidates[0].content.parts[0].text);
-      console.log(result.response.candidates[0].content.parts[0].text);
+      //console.log(result.response.candidates[0].content.parts[0].text);
+      //console.log(result.response.candidates[0].content.parts[0].text);
       runSample(reply_token,msg,userId);
       //reply(reply_token, result.response.candidates[0].content.parts[0].text)  
 
