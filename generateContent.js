@@ -84,7 +84,7 @@ exports.handleGenerateRequestLine = async (req, res) => {
         console.log('status = ' + res.statusCode);
     });
 }
-async function runSample(reply_token,text,userId) {
+async function runSample(reply_token,text,userid) {
 
   // The text query request.
   const request = {
@@ -114,7 +114,7 @@ async function runSample(reply_token,text,userId) {
     reply(reply_token,textGEMINI)
   }
   else if (result.intent.displayName=="income - custom - yes") {
-    console.log(userid);
+    console.log();
     console.log(`  Intent: ${result.outputContexts[0].parameters.any}`);
     console.log(`  Intent: ${result.outputContexts[0].parameters.number}`);
     pushTransection(userid,result.outputContexts[0].parameters.any,result.outputContexts[0].parameters.number);
@@ -139,4 +139,4 @@ async function runSample(reply_token,text,userId) {
     reply(reply_token,textGEMINI)
 
   }
-}
+}userid
