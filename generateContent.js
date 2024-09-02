@@ -113,7 +113,7 @@ async function runSample(reply_token,text,userId) {
   if(result.intent.displayName=="Question"){
     reply(reply_token,textGEMINI)
   }
-  else if (result.intent.displayName=="รายรับ-custom - yes") {
+  else if (result.intent.displayName=="income - custom - yes") {
     console.log(`  Intent: ${result.intent.displayName}`);
     //pushTransection(userid,0,userId);
     reply(reply_token,result.fulfillmentText)
