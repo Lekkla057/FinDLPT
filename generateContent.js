@@ -104,7 +104,7 @@ async function runSample(reply_token,text,userId) {
   
   console.log('Detected intent');
   const result = responses[0].queryResult;
-  console.log(result);
+  //console.log(result);
   // console.log(result.parameters.fields.Amont.listValue.values[0].structValue.fields.amount.numberValue);
   // console.log(result.parameters.fields.Transaction.listValue.values[0].stringValue);
 
@@ -114,8 +114,18 @@ async function runSample(reply_token,text,userId) {
     reply(reply_token,textGEMINI)
   }
   else if (result.intent.displayName=="income - custom - yes") {
-    console.log(`  Intent: ${result.outputContexts.parameters}`);
-    //pushTransection(userid,0,userId);
+    console.log(userid);
+    console.log(`  Intent: ${result.outputContexts[0].parameters.any}`);
+    console.log(`  Intent: ${result.outputContexts[0].parameters.number}`);
+    pushTransection(userid,result.outputContexts[0].parameters.any,result.outputContexts[0].parameters.number);
+    reply(reply_token,result.fulfillmentText)
+
+  }
+  else if (result.intent.displayName=="outcome - custom - yes") {
+    console.log(userid);
+    console.log(`  Intent: ${result.outputContexts[0].parameters.any}`);
+    console.log(`  Intent: ${result.outputContexts[0].parameters.number}`);
+    pushTransection(userid,result.outputContexts[0].parameters.any,-result.outputContexts[0].parameters.number);
     reply(reply_token,result.fulfillmentText)
 
   }  
