@@ -46,14 +46,14 @@ exports.handleGenerateRequestLine = async (req, res) => {
     try {
       let reply_token = req.body.events[0].replyToken
       let msg = req.body.events[0].message.text
-      //let userid=req.body.events[0].source[0].userId
-      console.log(req.body.events[0].source);
+      var userid=req.body.events[0].source.userId
+      console.log(req.body.events[0].source.userId);
     //   const { prompt } = req.body;
     //   console.log(prompt);
       //const result = await model.generateContent(msg);
       //console.log(result.response.candidates[0].content.parts[0].text);
       //console.log(result.response.candidates[0].content.parts[0].text);
-     // runSample(reply_token,msg,userid);
+      runSample(reply_token,msg,userid);
       //reply(reply_token, result.response.candidates[0].content.parts[0].text)  
 
     // return result; 
