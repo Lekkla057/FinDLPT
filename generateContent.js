@@ -7,6 +7,7 @@ const model = config.getGenerativeModel({ model: modelId });
 const request = require('request')
 const dialogflow = require('@google-cloud/dialogflow');
 const uuid = require('uuid');
+const {checkUser,pushTransection,get}=require("./database");
 
 /**
  * Send a query to the dialogflow agent, and return the query result.
@@ -45,13 +46,14 @@ exports.handleGenerateRequestLine = async (req, res) => {
     try {
       let reply_token = req.body.events[0].replyToken
       let msg = req.body.events[0].message.text
+      let userid=req.body.events[0].source.userId
       console.log(req.body);
     //   const { prompt } = req.body;
     //   console.log(prompt);
-      const result = await model.generateContent(msg);
+      //const result = await model.generateContent(msg);
       console.log(result.response.candidates[0].content.parts[0].text);
       console.log(result.response.candidates[0].content.parts[0].text);
-      runSample(reply_token,msg,result.response.candidates[0].content.parts[0].text);
+      runSample(reply_token,msg,userId);
       //reply(reply_token, result.response.candidates[0].content.parts[0].text)  
 
     // return result; 
@@ -82,7 +84,7 @@ exports.handleGenerateRequestLine = async (req, res) => {
         console.log('status = ' + res.statusCode);
     });
 }
-async function runSample(reply_token,text,textGEMINI) {
+async function runSample(reply_token,text,userId) {
 
   // The text query request.
   const request = {
@@ -102,7 +104,7 @@ async function runSample(reply_token,text,textGEMINI) {
   
   console.log('Detected intent');
   const result = responses[0].queryResult;
-  console.log(result);
+  console.log(result.parameters.fields);
   // console.log(result.parameters.fields.Amont.listValue.values[0].structValue.fields.amount.numberValue);
   // console.log(result.parameters.fields.Transaction.listValue.values[0].stringValue);
 
@@ -111,6 +113,12 @@ async function runSample(reply_token,text,textGEMINI) {
   if(result.intent.displayName=="Question"){
     reply(reply_token,textGEMINI)
   }
+  else if (result.intent.displayName=="รายรับ-custom - yes") {
+    console.log(`  Intent: ${result.intent.displayName}`);
+    //pushTransection(userid,0,userId);
+    reply(reply_token,result.fulfillmentText)
+
+  }  
   else if (result.intent) {
     console.log(`  Intent: ${result.intent.displayName}`);
     reply(reply_token,result.fulfillmentText)
