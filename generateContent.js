@@ -114,18 +114,20 @@ async function runSample(reply_token,text,userid) {
     reply(reply_token,textGEMINI)
   }
   else if (result.intent.displayName=="income - custom - yes") {
-    console.log();
-    console.log(`  Intent: ${JSON.stringify(result.outputContexts[0])}`);
-    console.log(`  Intent: ${result.outputContexts[0].parameters}`);
-    pushTransection(userid,result.outputContexts[0].parameters.any,result.outputContexts[0].parameters.number);
+    var transec=result.outputContexts[0].parameters.fields.any.stringValue;
+    var amont=result.outputContexts[0].parameters.fields.number.numberValue;
+    pushTransection(userid,transec,amont);
+    var data=get(userid);
+    console.log(data);
     reply(reply_token,result.fulfillmentText)
 
   }
   else if (result.intent.displayName=="outcome - custom - yes") {
-    console.log(userid);
-    console.log(`  Intent: ${result.outputContexts[0].parameters.any}`);
-    console.log(`  Intent: ${result.outputContexts[0].parameters.number}`);
-    pushTransection(userid,result.outputContexts[0].parameters.any,-result.outputContexts[0].parameters.number);
+    var transec=result.outputContexts[0].parameters.fields.any.stringValue;
+    var amont=result.outputContexts[0].parameters.fields.number.numberValue;
+    pushTransection(userid,transec,-amont);
+    var data=get(userid);
+    console.log(data);
     reply(reply_token,result.fulfillmentText)
 
   }  
