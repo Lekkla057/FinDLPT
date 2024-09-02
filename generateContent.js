@@ -114,7 +114,7 @@ async function runSample(reply_token,text,userId) {
     reply(reply_token,textGEMINI)
   }
   else if (result.intent.displayName=="income - custom - yes") {
-    console.log(`  Intent: ${result.intent.displayName}`);
+    console.log(`  Intent: ${result.outputContexts.parameters}`);
     //pushTransection(userid,0,userId);
     reply(reply_token,result.fulfillmentText)
 
