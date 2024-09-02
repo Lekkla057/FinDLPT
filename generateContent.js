@@ -110,7 +110,7 @@ async function runSample(reply_token,text,userid) {
 
   console.log(`  Query: ${result.queryText}`);
   console.log(`  Response: ${result.fulfillmentText}`);
-  if(result.intent.displayName=="Question"){
+  if(result.intent.displayName=="Question - custom"){
     const result = await model.generateContent(text);
     var textGEMINI=result.response.candidates[0].content.parts[0].text;
     reply(reply_token,textGEMINI)
