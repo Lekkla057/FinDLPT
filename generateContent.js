@@ -115,7 +115,7 @@ async function runSample(reply_token,text,userid) {
   }
   else if (result.intent.displayName=="income - custom - yes") {
     console.log();
-    console.log(`  Intent: ${parse.JSON(result.outputContexts[0])}`);
+    console.log(`  Intent: ${JSON.stringify(result.outputContexts[0])}`);
     console.log(`  Intent: ${result.outputContexts[0].parameters}`);
     pushTransection(userid,result.outputContexts[0].parameters.any,result.outputContexts[0].parameters.number);
     reply(reply_token,result.fulfillmentText)
