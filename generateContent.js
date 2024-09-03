@@ -119,7 +119,7 @@ async function runSample(reply_token,text,userid) {
     var transec=result.outputContexts[0].parameters.fields.any.stringValue;
     var amont=result.outputContexts[0].parameters.fields.number.numberValue;
     pushTransection(userid,transec,amont);
-    var data=get(userid);
+    var data=await get(userid);
     console.log(data);
     reply(reply_token,result.fulfillmentText)
 
@@ -128,7 +128,7 @@ async function runSample(reply_token,text,userid) {
     var transec=result.outputContexts[0].parameters.fields.any.stringValue;
     var amont=result.outputContexts[0].parameters.fields.number.numberValue;
     pushTransection(userid,transec,-amont);
-    var data=get(userid);
+    var data=await get(userid);
     console.log(data);
     reply(reply_token,result.fulfillmentText)
 
