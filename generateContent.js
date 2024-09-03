@@ -115,7 +115,7 @@ async function runSample(reply_token,text,userid) {
     var textGEMINI=result.response.candidates[0].content.parts[0].text;
     reply(reply_token,textGEMINI)
   }
-  else if (result.intent.displayName=="income - custom - yes") {
+  else if (result.intent.displayName=="income-outcome - custom - yes") {
     var transec=result.outputContexts[0].parameters.fields.any.stringValue;
     var amont=result.outputContexts[0].parameters.fields.number.numberValue;
     pushTransection(userid,transec,amont);
@@ -124,7 +124,7 @@ async function runSample(reply_token,text,userid) {
     reply(reply_token,result.fulfillmentText)
 
   }
-  else if (result.intent.displayName=="outcome - custom - yes") {
+  else if (result.intent.displayName=="income-outcome - custom-2 - yes") {
     var transec=result.outputContexts[0].parameters.fields.any.stringValue;
     var amont=result.outputContexts[0].parameters.fields.number.numberValue;
     pushTransection(userid,transec,-amont);
