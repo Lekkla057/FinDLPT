@@ -92,7 +92,7 @@ async function runSample(reply_token,text,userid) {
     var textmassage="";
     var amonttotal=0;
     data.forEach(element => {
-      amonttotal+=amonttotal+element.amont
+      amonttotal+=element.amont
       textmassage +=element.transaction+" วันที่"+element.date+" จำนวน"+element.amont+" คงเหลือ"+amonttotal+"\n"
     });
     reply(reply_token,textmassage)
