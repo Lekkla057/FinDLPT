@@ -121,6 +121,11 @@ async function runSample(reply_token,text,userid) {
     pushTransection(userid,transec,amont);
     var data=await get(userid);
     console.log(data);
+    var amontTotal=0;
+    data.forEach(element => {
+      amontTotal +=element.amont
+    });
+    fulfillmentText +=fulfillmentText+`\n คุณมียอดเงินทั้งหมด ${amontTotal} บาท`
     reply(reply_token,result.fulfillmentText)
 
   }
@@ -130,6 +135,11 @@ async function runSample(reply_token,text,userid) {
     pushTransection(userid,transec,-amont);
     var data=await get(userid);
     console.log(data);
+    var amontTotal=0;
+    data.forEach(element => {
+      amontTotal +=element.amont
+    });
+    fulfillmentText +=fulfillmentText+`\n คุณมียอดเงินทั้งหมด ${amontTotal} บาท`
     reply(reply_token,result.fulfillmentText)
 
   }  
