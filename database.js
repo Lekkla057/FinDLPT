@@ -22,6 +22,8 @@ var db = new JsonDB(new Config("myDataBase", true, false, '/'));
         let textDate = d.toLocaleString();
         var obj={"transaction":transaction,"amont":amont,"date":textDate}
         db.push(`/transaction/${userid}[]`,obj);
+        await db.save();
+
         return true;
 
     } catch (error) {
