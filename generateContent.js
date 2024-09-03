@@ -126,7 +126,7 @@ async function runSample(reply_token,text,userid) {
       amontTotal +=element.amont
     });
     var text =result.fulfillmentText+`\n คุณมียอดเงินทั้งหมด ${amontTotal} บาท`
-    reply(reply_token,result.fulfillmentText)
+    reply(reply_token,text)
 
   }
   else if (result.intent.displayName=="income-outcome - custom-2 - yes") {
@@ -140,7 +140,7 @@ async function runSample(reply_token,text,userid) {
       amontTotal +=element.amont
     });
     var text =result.fulfillmentText+`\n คุณมียอดเงินทั้งหมด ${amontTotal} บาท`
-    reply(reply_token,result.fulfillmentText)
+    reply(reply_token,text)
 
   }  
   else if (result.intent) {
