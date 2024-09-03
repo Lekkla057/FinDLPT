@@ -125,7 +125,7 @@ async function runSample(reply_token,text,userid) {
     data.forEach(element => {
       amontTotal +=element.amont
     });
-    fulfillmentText +=fulfillmentText+`\n คุณมียอดเงินทั้งหมด ${amontTotal} บาท`
+    var text =result.fulfillmentText+`\n คุณมียอดเงินทั้งหมด ${amontTotal} บาท`
     reply(reply_token,result.fulfillmentText)
 
   }
@@ -139,7 +139,7 @@ async function runSample(reply_token,text,userid) {
     data.forEach(element => {
       amontTotal +=element.amont
     });
-    fulfillmentText +=fulfillmentText+`\n คุณมียอดเงินทั้งหมด ${amontTotal} บาท`
+    var text =result.fulfillmentText+`\n คุณมียอดเงินทั้งหมด ${amontTotal} บาท`
     reply(reply_token,result.fulfillmentText)
 
   }  
