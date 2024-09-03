@@ -18,7 +18,9 @@ var db = new JsonDB(new Config("myDataBase", true, false, '/'));
   exports.pushTransection = async (userid,transaction,amont) => {
     try {
        // let numberOfElements = await db.count(`/transaction/${userid}`);
-        var obj={"transaction":transaction,"amont":amont}
+        const d = new Date();
+        let textDate = d.toLocaleString();
+        var obj={"transaction":transaction,"amont":amont,"date":textDate}
         db.push(`/transaction/${userid}[]`,obj);
         return true;
 

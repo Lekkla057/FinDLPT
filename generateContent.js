@@ -86,6 +86,18 @@ exports.handleGenerateRequestLine = async (req, res) => {
 }
 async function runSample(reply_token,text,userid) {
 
+  if(text=="ดูบัญชีรายรับ-รายจ่าย"){
+    var data=await get(userid);
+    console.log(data);
+    var textmassage="";
+    var amonttotal=0;
+    data.forEach(element => {
+      amonttotal+=amonttotal+element.amont
+      textmassage +=element.transaction+" วันที่"+element.date+" จำนวน"+element.amont+" คงเหลือ"+amonttotal+"\n"
+    });
+    reply(reply_token,textmassage)
+  }
+  else{
   // The text query request.
   const request = {
     session: sessionPath,
@@ -125,7 +137,7 @@ async function runSample(reply_token,text,userid) {
     data.forEach(element => {
       amontTotal +=element.amont
     });
-    var text =result.fulfillmentText+`\n คุณมียอดเงินทั้งหมด ${amontTotal} บาท`
+    var text =`ยืนยันการฝากเงิน\nคุณมียอดเงินทั้งหมด ${amontTotal} บาท\nขอบคุณที่ใช้บริการ`
     reply(reply_token,text)
 
   }
@@ -139,7 +151,7 @@ async function runSample(reply_token,text,userid) {
     data.forEach(element => {
       amontTotal +=element.amont
     });
-    var text =result.fulfillmentText+`\n คุณมียอดเงินทั้งหมด ${amontTotal} บาท`
+    var text =`ยืนยันการถอนเงิน\nคุณมียอดเงินทั้งหมด ${amontTotal} บาท\nขอบคุณที่ใช้บริการ`
     reply(reply_token,text)
 
   }  
@@ -153,4 +165,5 @@ async function runSample(reply_token,text,userid) {
     reply(reply_token,textGEMINI)
 
   }
+}
 }
