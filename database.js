@@ -14,22 +14,27 @@ const firebaseConfig = {
 
   const app = initializeApp(firebaseConfig);
   const db2 = getFirestore(app);
-  
-  // exports.test=async ()=>{
-  //   var obj={"userid":'a',"transaction":"ss","amont":5,"date":"a"}
+  exports.test=async ()=>{
+    // var obj={"userid":'a',"transaction":"ss","amont":5,"date":"a"}
 
-  //   const FinD = collection(db2, 'FinD');
-  //   var addFinD=await addDoc(FinD,obj);
-  //   // const FinDSnapshot = await addDoc(FinD);
-  //   // const FinDList = FinDSnapshot.docs.map(
-  //   //   function(doc){
-  //   //     if(doc.data().userid === "s"){
-  //   //         return doc.data()
-  //   //     }    
-  //   // });
+    // // const FinD = collection(db2, 'FinD');
+    // // var addFinD=await addDoc(FinD,obj);
+    // const FinD = query(collection(db2, 'FinD'), where("userid", "==", "Ubcc85fb37e903b792642a6a9ec824147"), orderBy("date"));
+    // const FinDSnapshot = await getDocs(FinD);
+    // const FinDList = FinDSnapshot.docs.map(
+    //   function(doc){
+    //         return doc.data();
+    // });
+    // // const FinDSnapshot = await addDoc(FinD);
+    // // const FinDList = FinDSnapshot.docs.map(
+    // //   function(doc){
+    // //     if(doc.data().userid === "s"){
+    // //         return doc.data()
+    // //     }    
+    // // });
 
-  //   console.log(addFinD);
-  // }
+    // console.log(FinDList);
+  }
 
   exports.pushTransection = async (userid,transaction,amont) => {
     try {
@@ -51,7 +56,7 @@ const firebaseConfig = {
   };
   exports.get = async (userid) => {
     try {
-      const FinD = query(collection(db2, 'FinD'), where("userid", "==", userid));
+      const FinD = query(collection(db2, 'FinD'), where("userid", "==", userid), orderBy("date"));
 
       const FinDSnapshot = await getDocs(FinD);
       const FinDList = FinDSnapshot.docs.map(

@@ -3,7 +3,7 @@ const { handleGenerateRequest,handleGenerateRequestLine } = require("./generateC
 const bodyParser = require('body-parser')
 const request = require('request')
 require("dotenv").config();
-const {checkUser,pushTransection,get}=require("./database");
+const {checkUser,pushTransection,get,test}=require("./database");
 const app = express();
 // 
 app.use(express.json());
@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
   res.send("Node.js and Google Gemini integration example");
   // pushTransection(d++,"add",50);
   // get(1);
+  // test()
 
 });
 app.post("/generate", handleGenerateRequest);
