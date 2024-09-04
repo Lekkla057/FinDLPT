@@ -130,7 +130,11 @@ async function runSample(reply_token,text,userid) {
   else if (result.intent.displayName=="income-outcome - custom - yes") {
     var transec=result.outputContexts[0].parameters.fields.any.stringValue;
     var amont=result.outputContexts[0].parameters.fields.number.numberValue;
-    pushTransection(userid,transec,amont);
+    var typetransaction=await checkTTypeTransaction();
+    if(typetransaction=="ฝากเงิน"){    pushTransection(userid,transec,amont);
+    }
+    else if(typetransaction=="ถอนเงิน"){    pushTransection(userid,transec,amont);
+    }
     var data=await get(userid);
     console.log(data);
     var amontTotal=0;
@@ -141,20 +145,20 @@ async function runSample(reply_token,text,userid) {
     reply(reply_token,text)
 
   }
-  else if (result.intent.displayName=="income-outcome - custom-2 - yes") {
-    var transec=result.outputContexts[0].parameters.fields.any.stringValue;
-    var amont=result.outputContexts[0].parameters.fields.number.numberValue;
-    pushTransection(userid,transec,-amont);
-    var data=await get(userid);
-    console.log(data);
-    var amontTotal=0;
-    data.forEach(element => {
-      amontTotal +=element.amont
-    });
-    var text =`ยืนยันการถอนเงิน\nคุณมียอดเงินทั้งหมด ${amontTotal} บาท\nขอบคุณที่ใช้บริการ`
-    reply(reply_token,text)
+  // else if (result.intent.displayName=="income-outcome - custom-2 - yes") {
+  //   var transec=result.outputContexts[0].parameters.fields.any.stringValue;
+  //   var amont=result.outputContexts[0].parameters.fields.number.numberValue;
+  //   pushTransection(userid,transec,-amont);
+  //   var data=await get(userid);
+  //   console.log(data);
+  //   var amontTotal=0;
+  //   data.forEach(element => {
+  //     amontTotal +=element.amont
+  //   });
+  //   var text =`ยืนยันการถอนเงิน\nคุณมียอดเงินทั้งหมด ${amontTotal} บาท\nขอบคุณที่ใช้บริการ`
+  //   reply(reply_token,text)
 
-  }  
+  // }  
   else if (result.intent) {
     console.log(`  Intent: ${result.intent.displayName}`);
     reply(reply_token,result.fulfillmentText)
@@ -166,4 +170,43 @@ async function runSample(reply_token,text,userid) {
 
   }
 }
+}
+async function checkTTypeTransaction(text){
+  const sessionClient2 = new dialogflow.SessionsClient({credentials:credentials,
+  });
+  const sessionPath2 = sessionClient2.projectAgentSessionPath(
+    projectId,
+    sessionId
+  );
+  var request = {
+    session: sessionPath2,
+    queryInput: {
+      text: {
+        // The query to send to the dialogflow agent
+        text: "ตรวจสอบธุรกรรม",
+        // The language used by the client (en-US)
+        languageCode: 'th-TH',
+      },
+    },
+  };
+
+  // Send request and log result
+  var responses = await sessionClient2.detectIntent(request);
+  
+  console.log('Detected intent');
+  var request = {
+    session: sessionPath2,
+    queryInput: {
+      text: {
+        // The query to send to the dialogflow agent
+        text: text,
+        // The language used by the client (en-US)
+        languageCode: 'th-TH',
+      },
+    },
+  };
+  responses = await sessionClient2.detectIntent(request);
+  const result = responses[0].queryResult;
+  console.log(result.fulfillmentText);
+return result.fulfillmentText
 }

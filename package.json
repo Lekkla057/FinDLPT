@@ -17,6 +17,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "json-sql": "^0.5.0",
+    "mysql": "^2.18.1",
     "node-json-db": "^2.3.0",
     "request": "^2.88.2"
   },
