@@ -130,7 +130,7 @@ async function runSample(reply_token,text,userid) {
   else if (result.intent.displayName=="income-outcome - custom - yes") {
     var transec=result.outputContexts[0].parameters.fields.any.stringValue;
     var amont=result.outputContexts[0].parameters.fields.number.numberValue;
-    var typetransaction=await checkTTypeTransaction();
+    var typetransaction=await checkTTypeTransaction(transec);
     if(typetransaction=="ฝากเงิน"){    pushTransection(userid,transec,amont);
     }
     else if(typetransaction=="ถอนเงิน"){    pushTransection(userid,transec,amont);
