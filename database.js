@@ -1,7 +1,7 @@
 var { JsonDB, Config } =require('node-json-db');
 var db = new JsonDB(new Config("myDataBase", true, false, '/'));
 const { initializeApp } = require('firebase/app');
-const { getFirestore, collection, getDocs,addDoc } = require('firebase/firestore');
+const { getFirestore, collection, getDocs,addDoc, query, where } = require('firebase/firestore');
 const firebaseConfig = {
   apiKey: "AIzaSyA-4_5rHvcMOh3iY4PttN4l29iGXRDiFPI",
   authDomain: "shopee-8710c.firebaseapp.com",
@@ -51,13 +51,12 @@ const firebaseConfig = {
   };
   exports.get = async (userid) => {
     try {
-      const FinD = collection(db2, 'FinD');
+      const FinD = query(collection(db2, 'FinD'), where("userid", "==", userid));
+
       const FinDSnapshot = await getDocs(FinD);
       const FinDList = FinDSnapshot.docs.map(
         function(doc){
-          if(doc.data().userid === userid){
-              return doc.data()
-          }    
+              return doc.data();
       });
 
 
