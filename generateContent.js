@@ -133,7 +133,7 @@ async function runSample(reply_token,text,userid) {
     var typetransaction=await checkTTypeTransaction(transec);
     if(typetransaction=="ฝากเงิน"){    pushTransection(userid,transec,amont);
     }
-    else if(typetransaction=="ถอนเงิน"){    pushTransection(userid,transec,amont);
+    else if(typetransaction=="ถอนเงิน"){    pushTransection(userid,transec,-amont);
     }
     var data=await get(userid);
     console.log(data);
