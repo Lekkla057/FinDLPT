@@ -144,7 +144,41 @@ function replypdf(reply_token, msg) {
     {
       url: "https://api.line.me/v2/bot/message/push",
       headers: headers,
-      body: body,
+      body: JSON.stringify({
+        to: "Ubcc85fb37e903b792642a6a9ec824147",
+        messages: [
+          {
+            type: "template",
+            altText: "This is a buttons template",
+            template: {
+              type: "buttons",
+              thumbnailImageUrl: "https://www.nylon.com.sg/wp-content/uploads/2017/07/LINE-Friends.jpg",
+              imageAspectRatio: "rectangle",
+              imageSize: "cover",
+              imageBackgroundColor: "#FFFFFF",
+              title: "Menu",
+              text: "Please select",
+              defaultAction: {
+                type: "uri",
+                label: "View detail",
+                uri: "https://developers.line.biz"
+              },
+              actions: [
+                {
+                  type: "postback",
+                  label: "Buy",
+                  data: "action=buy&itemid=123"
+                },
+                {
+                  type: "uri",
+                  label: "View detail",
+                  uri: "https://line.me"
+                }
+              ]
+            }
+          }
+        ]
+      }),
     },
     (err, res, body) => {
       console.log("status = " + JSON.stringify(res));
