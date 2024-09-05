@@ -110,39 +110,33 @@ function replypdf(reply_token, msg) {
     replyToken: reply_token,
     messages: [
       {
-        "type": "template",
-        "altText": "This is a buttons template",
-        "template": {
-          "type": "buttons",
-          "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
-          "imageAspectRatio": "rectangle",
-          "imageSize": "cover",
-          "imageBackgroundColor": "#FFFFFF",
-          "title": "Menu",
-          "text": "Please select",
-          "defaultAction": {
-            "type": "uri",
-            "label": "View detail",
-            "uri": pdff
-          },
-          "actions": [
-            {
-              "type": "postback",
-              "label": "Buy",
-              "data": "action=buy&itemid=123"
+        type: "template",
+          altText: "This is a buttons template",
+          template: {
+            type: "buttons",
+            thumbnailImageUrl: "https://www.nylon.com.sg/wp-content/uploads/2017/07/LINE-Friends.jpg",
+            imageAspectRatio: "rectangle",
+            imageSize: "cover",
+            imageBackgroundColor: "#FFFFFF",
+            title: "Menu",
+            text: "Please select",
+            defaultAction: {
+              type: "uri",
+              label: "View detail",
+              uri: pdff
             },
-            {
-              "type": "postback",
-              "label": "Add to cart",
-              "data": "action=add&itemid=123"
-            },
-            {
-              "type": "uri",
-              "label": "View detail",
-              "uri": pdff
-            }
-          ]
-        }
+            actions: [
+              {
+                type: "postback",
+                label: "Buy",
+                data: "action=buy&itemid=123"
+              },
+              {
+                type: "uri",
+                label: "View detail",
+                uri: pdff
+              }
+            ]}
       }
     ],
   });
