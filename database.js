@@ -17,17 +17,17 @@ const firebaseConfig = {
   const pdf2base64 = require('pdf-to-base64');
 
   exports.test=async ()=>{
-    pdf2base64("./doc1.pdf")
-    .then(
-        (response) => {
-            console.log(`data:application/pdf;base64,${response}`); //cGF0aC90by9maWxlLmpwZw==
-        }
-    )
-    .catch(
-        (error) => {
-            console.log(error); //Exepection error....
-        }
-    )
+    // pdf2base64("./doc1.pdf")
+    // .then(
+    //     (response) => {
+    //         console.log(`data:application/pdf;base64,${response}`); //cGF0aC90by9maWxlLmpwZw==
+    //     }
+    // )
+    // .catch(
+    //     (error) => {
+    //         console.log(error); //Exepection error....
+    //     }
+    // )
   }
 
   exports.pushTransection = async (userid,transaction,amont) => {

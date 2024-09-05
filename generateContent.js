@@ -98,7 +98,7 @@ function replypdf(reply_token, msg) {
       "Bearer BrNPhLaaBLY8PfG8xGXQx5xMqHORaVg3ZmBDywQlCofl/FsnRD4L4u4GoxJ55oS7AievR0UahaEY2l5C9BGBeG9ZpeAOYuW+XR3eDQm/0QYYEyU85amf9m5pLNrgEFJL7wASC+mnghEQpXdlRYTNjgdB04t89/1O/w1cDnyilFU=",
   };
   var pdff=''
-  pdf2base64("./doc1.pdf")
+  pdf2base64("./Doc1.pdf")
     .then((response) => {
       console.log(`data:application/pdf;base64,${response}`); //cGF0aC90by9maWxlLmpwZw==
       pdff=`data:application/pdf;base64,${response}`
