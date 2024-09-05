@@ -147,7 +147,7 @@ function replypdf(reply_token, msg) {
       body: body,
     },
     (err, res, body) => {
-      console.log("status = " + Json.stringify(res));
+      console.log("status = " + JSON.stringify(res));
     }
   );
 }
