@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
   res.send("Node.js and Google Gemini integration example");
   // pushTransection(d++,"add",50);
   // get(1);
-  // test()
+   test()
 
 });
 app.post("/generate", handleGenerateRequest);

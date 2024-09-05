@@ -20,6 +20,7 @@
     "json-sql": "^0.5.0",
     "mysql": "^2.18.1",
     "node-json-db": "^2.3.0",
+    "pdf-to-base64": "^1.0.3",
     "request": "^2.88.2"
   },
   "repository": {
