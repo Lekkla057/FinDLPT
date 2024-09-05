@@ -106,40 +106,7 @@ function replypdf(reply_token, msg) {
     .catch((error) => {
       console.log(error); //Exepection error....
     });
-  let body = JSON.stringify({
-    to: "Ubcc85fb37e903b792642a6a9ec824147",
-    messages: [
-      {
-        type: "template",
-          altText: "This is a buttons template",
-          template: {
-            type: "buttons",
-            thumbnailImageUrl: "https://www.nylon.com.sg/wp-content/uploads/2017/07/LINE-Friends.jpg",
-            imageAspectRatio: "rectangle",
-            imageSize: "cover",
-            imageBackgroundColor: "#FFFFFF",
-            title: "Menu",
-            text: "Please select",
-            defaultAction: {
-              type: "uri",
-              label: "View detail",
-              uri: pdff
-            },
-            actions: [
-              {
-                type: "postback",
-                label: "Buy",
-                data: "action=buy&itemid=123"
-              },
-              {
-                type: "uri",
-                label: "View detail",
-                uri: pdff
-              }
-            ]}
-      }
-    ],
-  });
+
   request.post(
     {
       url: "https://api.line.me/v2/bot/message/push",
@@ -161,7 +128,7 @@ function replypdf(reply_token, msg) {
               defaultAction: {
                 type: "uri",
                 label: "View detail",
-                uri: "https://developers.line.biz"
+                uri: pdff
               },
               actions: [
                 {
@@ -172,7 +139,7 @@ function replypdf(reply_token, msg) {
                 {
                   type: "uri",
                   label: "View detail",
-                  uri: "https://line.me"
+                  uri: pdff
                 }
               ]
             }
