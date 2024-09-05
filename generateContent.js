@@ -107,7 +107,7 @@ function replypdf(reply_token, msg) {
       console.log(error); //Exepection error....
     });
   let body = JSON.stringify({
-    replyToken: reply_token,
+    to: "Ubcc85fb37e903b792642a6a9ec824147",
     messages: [
       {
         type: "template",
@@ -147,7 +147,7 @@ function replypdf(reply_token, msg) {
       body: body,
     },
     (err, res, body) => {
-      console.log("status = " + res);
+      console.log("status = " + Json.stringify(res));
     }
   );
 }
